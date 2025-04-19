@@ -1,0 +1,40 @@
+vocab = []
+
+def word_tokenize(text):
+    global vocab
+
+    words = []
+    word = ''
+    
+    for letter in text:
+
+        if letter.isalpha():
+            word += letter
+
+        else:
+            words.append(word)
+            word = ''
+
+    if word:
+        words.append(word)
+
+    for w in words:
+
+        if w not in vocab:
+            vocab.append(w)
+
+    return words
+
+def main():
+
+    while True:
+        user = input(' > ')
+
+        if user == 'EXIT':
+            break
+
+        print(word_tokenize(user))
+        print(vocab)
+
+if __name__ == '__main__':
+    main()
